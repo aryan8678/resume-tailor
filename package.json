@@ -1,12 +1,12 @@
 {
   "dependencies": {
-    "cheerio": "^1.2.0"
+    "cheerio": "^1.2.0",
+    "jsdom": "^29.1.1"
   },
   "name": "resume-tailor",
   "version": "1.0.0",
   "description": "",
   "main": "test.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
