@@ -18,9 +18,10 @@
     }
     },
   "background": {
-    "service_worker": "test.js",
+    "service_worker": "./test.js",
     "type": "module"
   },
-  "permissions": ["activeTab","scripting"]
+  "permissions": ["activeTab","scripting","identity","storage"],
+  "host_permissions": ["<all_urls>"]
   
 }
