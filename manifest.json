@@ -18,7 +18,8 @@
     }
     },
   "background": {
-    "service_worker": "test.js"
+    "service_worker": "test.js",
+    "type": "module"
   },
   "permissions": ["activeTab","scripting"]
   
