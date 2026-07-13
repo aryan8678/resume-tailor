@@ -1,3 +1,6 @@
+import getData from "./scrap";
+
 chrome.action.onClicked.addListener((tab) => { 
-    console.log("url " , tab.url);
+    const data =  getData(tab.url);
+    console.log(data);
 });

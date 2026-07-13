@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "cheerio": "^1.2.0"
+  },
+  "name": "resume-tailor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aryan8678/resume-tailor.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/aryan8678/resume-tailor/issues"
+  },
+  "homepage": "https://github.com/aryan8678/resume-tailor#readme"
+}
