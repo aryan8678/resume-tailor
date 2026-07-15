@@ -108,5 +108,5 @@ export default async function resAi(resumeData, parsedData) {
     fences, no explanation, starting with \\documentclass and ending with \\end{document}.
     `;
 
-    
+    // Call the OpenAI API with the system and user prompts
 }

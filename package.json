@@ -1,6 +1,9 @@
 {
   "dependencies": {
     "cheerio": "^1.2.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
     "jsdom": "^29.1.1"
   },
   "name": "resume-tailor",
@@ -8,6 +11,7 @@
   "description": "",
   "main": "test.js",
   "scripts": {
+    "dev": "nodemon backend.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/aryan8678/resume-tailor/issues"
   },
-  "homepage": "https://github.com/aryan8678/resume-tailor#readme"
+  "homepage": "https://github.com/aryan8678/resume-tailor#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
 }

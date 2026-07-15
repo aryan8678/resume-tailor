@@ -20,5 +20,22 @@ chrome.action.onClicked.addListener(async (tab) => {
         console.log(parsedData.title, "\n", parsedData.description, "\n",parsedData.skills ,"\n", parsedData.importantText); 
     }else {
         console.log("data gaya chaa mudane");
+        return;
     }
+
+    const finalResume = await fetch("http://localhost:8080/ai", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ resumeData, parsedData })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("Success:", data);
+        return data.finalResume;
+    })
+    .catch((error) => {
+        console.error("Error:", error);
+    });
 });
