@@ -6,6 +6,7 @@ const app = express();
 dotenv.config();
 
 app.use(cors());
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
@@ -21,9 +22,9 @@ app.post("/ai", (req, res) => {
      });
   }
   catch (error) {
-    ers.status(500).json({
+    res.status(500).json({
       message: "error aa gaya .. AI hai ki kahi de ai hai",
-    })
+    });
   }
 })
 

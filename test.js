@@ -13,16 +13,13 @@ chrome.action.onClicked.addListener(async (tab) => {
     
     const base64String = rawData.split(',')[1];
     const resumeData = atob(base64String);
-    console.log(resumeData);
+    
     const data = await getData(tab.id);
     const parsedData = parseJobPage(data.toString());
-    if(parsedData) {
-        console.log(parsedData.title, "\n", parsedData.description, "\n",parsedData.skills ,"\n", parsedData.importantText); 
-    }else {
-        console.log("data gaya chaa mudane");
-        return;
+    if (!parsedData) {
+      console.log("data gaya chaa mudane");
+      return;
     }
-
     const finalResume = await fetch("http://localhost:8080/ai", {
         method: "POST",
         headers: {
