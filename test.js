@@ -13,7 +13,7 @@ chrome.action.onClicked.addListener(async (tab) => {
     const data = await getData(tab.id);
     const parsedData = parseJobPage(data.toString());
     if(parsedData) {
-        console.log(parsedData)
+        console.log(parsedData.jobTitle, "\n", parsedData.jobDescription, "\n",parsedData.skills ,"\n", parsedData.importantText); 
     }else {
         console.log("data gaya chaa mudane");
     }
