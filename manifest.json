@@ -21,7 +21,7 @@
     "service_worker": "./test.js",
     "type": "module"
   },
-  "permissions": ["activeTab","scripting","identity","storage"],
+  "permissions": ["activeTab","scripting","identity","storage","unlimitedStorage"],
   "host_permissions": ["<all_urls>"]
   
 }
