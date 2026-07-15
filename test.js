@@ -9,11 +9,15 @@ chrome.action.onClicked.addListener(async (tab) => {
         chrome.tabs.create({ url: "input.html" });
         return;
     }
-    const resumeData = resume.resume.data;
+    const rawData = resume.resume.data;
+    
+    const base64String = rawData.split(',')[1];
+    const decodedLatexText = atob(base64String);
+    console.log(decodedLatexText);
     const data = await getData(tab.id);
     const parsedData = parseJobPage(data.toString());
     if(parsedData) {
-        console.log(parsedData.jobTitle, "\n", parsedData.jobDescription, "\n",parsedData.skills ,"\n", parsedData.importantText); 
+        console.log(parsedData.title, "\n", parsedData.description, "\n",parsedData.skills ,"\n", parsedData.importantText); 
     }else {
         console.log("data gaya chaa mudane");
     }
