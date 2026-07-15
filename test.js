@@ -12,8 +12,8 @@ chrome.action.onClicked.addListener(async (tab) => {
     const rawData = resume.resume.data;
     
     const base64String = rawData.split(',')[1];
-    const decodedLatexText = atob(base64String);
-    console.log(decodedLatexText);
+    const resumeData = atob(base64String);
+    console.log(resumeData);
     const data = await getData(tab.id);
     const parsedData = parseJobPage(data.toString());
     if(parsedData) {
