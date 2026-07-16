@@ -12,16 +12,17 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-app.post("/ai", (req, res) => {
+app.post("/ai", async (req, res) => {
   const {resumeData, parsedData} = req.body;
   try {
-    const result = resAi(resumeData, parsedData);
+    const result = await resAi(resumeData, parsedData);
     res.status(200).json({ 
       message: "success",
       finalResume: result
      });
   }
   catch (error) {
+    console.error("Error in /ai route:", error);
     res.status(500).json({
       message: "error aa gaya .. AI hai ki kahi de ai hai",
     });
