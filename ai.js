@@ -1,3 +1,9 @@
+import Groq from "groq-sdk";
+import dotenv from "dotenv";
+dotenv.config();
+
+const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
+
 export default async function resAi(resumeData, parsedData) {
   const systemPrompt = `
     You are an elite ATS Resume Optimization Engine. You receive a candidate's MASTER RESUME written
@@ -83,7 +89,7 @@ export default async function resAi(resumeData, parsedData) {
     this output — that will be requested separately. This call returns LaTeX only.
     `;
 
-   const userPrompt = `
+  const userPrompt = `
     ═══════════════════════════════════════
     MASTER RESUME (LaTeX source — ground truth, do not add facts beyond this)
     ═══════════════════════════════════════
@@ -108,5 +114,16 @@ export default async function resAi(resumeData, parsedData) {
     fences, no explanation, starting with \\documentclass and ending with \\end{document}.
     `;
 
-    // Call the OpenAI API with the system and user prompts
+  // Call the OpenAI API with the system and user prompts
+  const response = await groq.chat.completions.create({
+    model: "llama-3.3-70b-versatile",
+    messages: [
+      { role: "system", content: systemPrompt },
+      { role: "user", content: userPrompt },
+    ],
+    temperature: 0.3,
+    max_tokens: 4000,
+  });
+
+  return response.choices[0].message.content;
 }
