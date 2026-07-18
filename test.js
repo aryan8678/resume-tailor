@@ -11,9 +11,7 @@ chrome.action.onClicked.addListener(async (tab) => {
     }
     const rawData = resume.resume.data;
     
-    const base64String = rawData.split(',')[1];
-    const resumeData = atob(base64String);
-    
+    const base64String = rawData.split(",")[1];
     const data = await getData(tab.id);
     const parsedData = parseJobPage(data.toString());
     if (!parsedData) {
@@ -21,18 +19,23 @@ chrome.action.onClicked.addListener(async (tab) => {
       return;
     }
     const finalResume = await fetch("http://localhost:8080/ai", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ resumeData, parsedData })
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ resumeData: base64String, parsedData }),
     })
-    .then(response => response.json())
-    .then(data => {
-        console.log("Success:", data);
-        return data.finalResume;
-    })
-    .catch((error) => {
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.blob();
+      })
+      .then((blob) => {
+        const url = URL.createObjectURL(blob);
+        chrome.tabs.create({ url });
+      })
+      .catch((error) => {
         console.error("Error:", error);
-    });
+      });
 });
